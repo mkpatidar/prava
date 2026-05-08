@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+<title>🧘 Prava</title>
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  overflow-x:hidden;
+}
+
+/* =========================
+BODY
+========================= */
+
+body{
+
+  font-family:'Segoe UI',sans-serif;
+
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:14px;
+
+  color:white;
+
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+  rgba(0,0,0,0.45),
+  rgba(0,0,0,0.68)
+  ),
+  url('https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg')
+  center/cover no-repeat;
+
+  position:relative;
+
+}
+
+/* =========================
+BIRDS
+========================= */
+
+.bird{
+
+  position:absolute;
+
+  z-index:1;
+
+  opacity:0.7;
+
+  pointer-events:none;
+
+}
+
+.bird span{
+
+  display:block;
+
+  font-size:20px;
+
+  animation:
+  wing 0.8s ease-in-out infinite;
+
+}
+
+@keyframes wing{
+
+  0%{
+    transform:
+    rotate(0deg)
+    scale(1);
+  }
+
+  50%{
+    transform:
+    rotate(-8deg)
+    scale(1.08);
+  }
+
+  100%{
+    transform:
+    rotate(0deg)
+    scale(1);
+  }
+
+}
+
+.bird1{
+  animation:
+  flyLeftTop 24s linear infinite;
+}
+
+.bird2{
+  animation:
+  flyBottomLeft 30s linear infinite;
+  animation-delay:5s;
+}
+
+.bird3{
+  animation:
+  flyRightToLeft 28s linear infinite;
+  animation-delay:9s;
+}
+
+.bird4{
+  animation:
+  flyTopRight 34s linear infinite;
+  animation-delay:13s;
+}
+
+.bird5{
+  animation:
+  flyMiddleCurve 26s linear infinite;
+  animation-delay:7s;
+}
+
+@keyframes flyLeftTop{
+
+  0%{
+    transform:
+    translate(-10vw,-5vh);
+    opacity:0;
+  }
+
+  20%{
+    opacity:0.8;
+  }
+
+  50%{
+    transform:
+    translate(40vw,10vh);
+  }
+
+  100%{
+    transform:
+    translate(120vw,25vh);
+    opacity:0;
+  }
+
+}
+
+@keyframes flyBottomLeft{
+
+  0%{
+    transform:
+    translate(-15vw,75vh);
+    opacity:0;
+  }
+
+  20%{
+    opacity:0.8;
+  }
+
+  60%{
+    transform:
+    translate(50vw,25vh);
+  }
+
+  100%{
+    transform:
+    translate(120vw,-5vh);
+    opacity:0;
+  }
+
+}
+
+@keyframes flyRightToLeft{
+
+  0%{
+    transform:
+    translate(110vw,10vh)
+    scaleX(-1);
+    opacity:0;
+  }
+
+  20%{
+    opacity:0.8;
+  }
+
+  55%{
+    transform:
+    translate(50vw,0vh)
+    scaleX(-1);
+  }
+
+  100%{
+    transform:
+    translate(-20vw,35vh)
+    scaleX(-1);
+    opacity:0;
+  }
+
+}
+
+@keyframes flyTopRight{
+
+  0%{
+    transform:
+    translate(110vw,-10vh)
+    scaleX(-1);
+    opacity:0;
+  }
+
+  25%{
+    opacity:0.8;
+  }
+
+  60%{
+    transform:
+    translate(40vw,20vh)
+    scaleX(-1);
+  }
+
+  100%{
+    transform:
+    translate(-20vw,50vh)
+    scaleX(-1);
+    opacity:0;
+  }
+
+}
+
+@keyframes flyMiddleCurve{
+
+  0%{
+    transform:
+    translate(-10vw,40vh);
+    opacity:0;
+  }
+
+  25%{
+    opacity:0.8;
+  }
+
+  50%{
+    transform:
+    translate(45vw,5vh);
+  }
+
+  75%{
+    transform:
+    translate(80vw,25vh);
+  }
+
+  100%{
+    transform:
+    translate(120vw,-10vh);
+    opacity:0;
+  }
+
+}
+
+/* =========================
+CONTAINER
+========================= */
+
+.container{
+
+  position:relative;
+
+  width:100%;
+  max-width:360px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(14px);
+
+  border-radius:28px;
+
+  padding:20px 16px;
+
+  text-align:center;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.35);
+
+  z-index:5;
+
+  overflow:hidden;
+
+}
+
+/* =========================
+MUSIC TOGGLE
+========================= */
+
+.music-toggle{
+  cursor:pointer;
+}
+
+.music-toggle:hover{
+  transform:scale(1.08);
+}
+
+/* =========================
+TITLE
+========================= */
+
+.title{
+
+  font-size:20px;
+
+  margin-bottom:8px;
+
+  font-weight:700;
+
+  letter-spacing:0.5px;
+
+}
+
+/* =========================
+SUBTITLE
+========================= */
+
+.subtitle{
+
+  opacity:0.82;
+
+  font-size:11px;
+
+  margin-bottom:18px;
+
+  line-height:1.8;
+
+}
+
+.subtitle span{
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+}
+
+.subtitle span:hover{
+  color:#7fdfff;
+}
+
+/* =========================
+INPUTS
+========================= */
+
+.input-group{
+
+  display:flex;
+
+  gap:8px;
+
+  margin-bottom:18px;
+
+}
+
+.box{
+
+  flex:1;
+
+  min-width:0;
+
+  background:rgba(255,255,255,0.08);
+
+  padding:10px 6px;
+
+  border-radius:16px;
+
+}
+
+.box label{
+
+  display:block;
+
+  font-size:10px;
+
+  margin-bottom:6px;
+
+  opacity:0.8;
+
+}
+
+.box input{
+
+  width:100%;
+
+  border:none;
+  outline:none;
+
+  background:transparent;
+
+  color:white;
+
+  text-align:center;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+}
+
+/* =========================
+VOLUME
+========================= */
+
+.volume-box{
+
+  margin-bottom:18px;
+
+  text-align:left;
+
+}
+
+.volume-top{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  margin-bottom:8px;
+
+  font-size:12px;
+
+}
+
+input[type=range]{
+
+  width:100%;
+
+  accent-color:#00c6ff;
+
+}
+
+/* =========================
+BUTTON
+========================= */
+
+button{
+
+  width:100%;
+
+  padding:12px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #00c6ff,
+  #0072ff
+  );
+
+  color:white;
+
+  font-size:15px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+}
+
+button:hover{
+  transform:scale(1.03);
+}
+
+/* =========================
+PROGRESS
+========================= */
+
+.progress-wrapper{
+
+  position:relative;
+
+  width:170px;
+  height:170px;
+
+  margin:18px auto;
+
+}
+
+.progress-ring{
+  transform:rotate(-90deg);
+}
+
+.progress-ring circle{
+
+  fill:none;
+
+  stroke-width:10;
+
+}
+
+.progress-bg{
+  stroke:rgba(255,255,255,0.15);
+}
+
+.progress{
+
+  stroke:#00c6ff;
+
+  stroke-linecap:round;
+
+  transition:stroke-dashoffset 0.5s;
+
+  filter:drop-shadow(0 0 10px #00c6ff);
+
+}
+
+/* =========================
+BREATH CIRCLE
+========================= */
+
+.circle{
+
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  width:92px;
+  height:92px;
+
+  transform:translate(-50%,-50%);
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle,
+  rgba(255,255,255,0.55),
+  rgba(255,255,255,0.12));
+
+  box-shadow:
+  0 0 30px rgba(255,255,255,0.18);
+
+  transition:all linear;
+
+}
+
+.inhale{
+
+  transform:
+  translate(-50%,-50%)
+  scale(0.72);
+
+}
+
+.hold{
+
+  transform:
+  translate(-50%,-50%)
+  scale(0.72);
+
+}
+
+.exhale{
+
+  transform:
+  translate(-50%,-50%)
+  scale(1.38);
+
+}
+
+/* =========================
+STATUS
+========================= */
+
+#status{
+
+  font-size:18px;
+
+  margin-bottom:14px;
+
+}
+
+/* =========================
+MESSAGE
+========================= */
+
+#message{
+
+  margin-top:14px;
+
+  font-size:15px;
+
+  color:#ffd86b;
+
+  min-height:22px;
+
+}
+
+/* =========================
+BOTTOM
+========================= */
+
+.bottom{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  margin-top:10px;
+
+  opacity:0.9;
+
+  font-size:13px;
+
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:380px){
+
+  body{
+    padding:10px;
+  }
+
+  .container{
+
+    max-width:100%;
+
+    border-radius:24px;
+
+  }
+
+  .progress-wrapper{
+
+    width:160px;
+    height:160px;
+
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Birds -->
+
+<div class="bird bird1"><span>🕊️</span></div>
+<div class="bird bird2"><span>🕊️</span></div>
+<div class="bird bird3"><span>🕊️</span></div>
+<div class="bird bird4"><span>🕊️</span></div>
+<div class="bird bird5"><span>🕊️</span></div>
+
+<!-- Main -->
+
+<div class="container">
+
+  <!-- Title -->
+
+  <div class="title">
+    🧘 Prava
+  </div>
+
+  <!-- Modes -->
+
+  <div class="subtitle">
+
+    <span onclick="setMode(7,0,7)">
+      Relax
+    </span>
+
+    •
+
+    <span onclick="setMode(15,0,15)">
+      Deep Breathe
+    </span>
+
+    •
+
+    <span onclick="setMode(7,12,12)">
+      Breath Retention
+    </span>
+
+  </div>
+
+  <!-- Inputs -->
+
+  <div class="input-group">
+
+    <div class="box">
+
+      <label>Inhale</label>
+
+      <input
+      type="number"
+      id="inhale"
+      value="7"
+      onclick="resetSession()">
+
+    </div>
+
+    <div class="box">
+
+      <label>Hold</label>
+
+      <input
+      type="number"
+      id="hold"
+      value="0"
+      onclick="resetSession()">
+
+    </div>
+
+    <div class="box">
+
+      <label>Exhale</label>
+
+      <input
+      type="number"
+      id="exhale"
+      value="7"
+      onclick="resetSession()">
+
+    </div>
+
+  </div>
+
+  <!-- Volume -->
+
+  <div class="volume-box">
+
+    <div class="volume-top">
+
+      <span><span class="music-toggle"
+        onclick="toggleMusic()"
+        id="musicIcon">🔊</span> Sound Volume</span>
+
+      <span id="volumeValue">
+        70%
+      </span>
+
+    </div>
+
+    <input
+    type="range"
+    id="volume"
+    min="0"
+    max="1"
+    step="0.1"
+    value="0.7">
+
+  </div>
+
+  <!-- Button -->
+
+  <button
+  id="sessionBtn"
+  onclick="toggleSession()">
+
+    Start Session
+
+  </button>
+
+  <!-- Progress -->
+
+  <div class="progress-wrapper">
+
+    <svg
+    class="progress-ring"
+    width="170"
+    height="170">
+
+      <circle
+      class="progress-bg"
+      cx="85"
+      cy="85"
+      r="70"></circle>
+
+      <circle
+      class="progress"
+      id="progressCircle"
+      cx="85"
+      cy="85"
+      r="70"></circle>
+
+    </svg>
+
+    <div
+    class="circle"
+    id="circle"></div>
+
+  </div>
+
+  <!-- Status -->
+
+  <div id="status">
+    Ready
+  </div>
+
+  <!-- Message -->
+
+  <div id="message"></div>
+
+  <!-- Bottom -->
+
+  <div class="bottom">
+
+    <div id="timer">
+      ⏱️ 00:00
+    </div>
+
+    <div id="rounds">
+      🔁 0 / 108
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Audio -->
+
+<audio id="bgMusic" loop preload="auto">
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="bell">
+<source src="bell.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* =========================
+VARIABLES
+========================= */
+
+let running = false;
+
+let totalSeconds = 0;
+
+let rounds = 0;
+
+let masterVolume = 0.7;
+
+let musicOn = true;
+
+const TARGET = 108;
+
+/* =========================
+PROGRESS
+========================= */
+
+const progressCircle =
+document.getElementById("progressCircle");
+
+const radius = 70;
+
+const circumference =
+2 * Math.PI * radius;
+
+progressCircle.style.strokeDasharray =
+circumference;
+
+progressCircle.style.strokeDashoffset =
+circumference;
+
+/* =========================
+PRESETS
+========================= */
+
+function setMode(inhale,hold,exhale){
+
+  resetSession();
+
+  document.getElementById("inhale").value =
+  inhale;
+
+  document.getElementById("hold").value =
+  hold;
+
+  document.getElementById("exhale").value =
+  exhale;
+
+}
+
+/* =========================
+SESSION TOGGLE
+========================= */
+
+function toggleSession(){
+
+  if(running){
+
+    resetSession();
+
+  }else{
+
+    startMeditation();
+
+  }
+
+}
+
+/* =========================
+RESET
+========================= */
+
+function resetSession(){
+
+  running = false;
+
+  rounds = 0;
+
+  totalSeconds = 0;
+
+  document.getElementById("sessionBtn")
+  .innerText =
+  "Start Session";
+
+  document.getElementById("timer")
+  .innerText =
+  "⏱️ 00:00";
+
+  document.getElementById("rounds")
+  .innerText =
+  "🔁 0 / 108";
+
+  document.getElementById("status")
+  .innerText =
+  "Ready";
+
+  document.getElementById("message")
+  .innerText = "";
+
+  progressCircle.style.strokeDashoffset =
+  circumference;
+
+  const circle =
+  document.getElementById("circle");
+
+  circle.style.transition =
+  "all 0.3s ease";
+
+  circle.className =
+  "circle";
+
+}
+
+/* =========================
+VOLUME
+========================= */
+
+const volumeSlider =
+document.getElementById("volume");
+
+const volumeValue =
+document.getElementById("volumeValue");
+
+volumeSlider.addEventListener("input",()=>{
+
+  masterVolume =
+  parseFloat(volumeSlider.value);
+
+  volumeValue.innerText =
+  Math.floor(masterVolume * 100)
+  + "%";
+
+  document.getElementById("bgMusic").volume =
+  masterVolume * 0.4;
+
+});
+
+/* =========================
+VOICE
+========================= */
+
+function speak(text){
+
+  speechSynthesis.cancel();
+
+  let msg =
+  new SpeechSynthesisUtterance(text);
+
+  msg.lang = "hi-IN";
+
+  msg.rate = 0.85;
+
+  msg.volume = masterVolume;
+
+  speechSynthesis.speak(msg);
+
+}
+
+/* =========================
+MUSIC
+========================= */
+
+function toggleMusic(){
+
+  let bg =
+  document.getElementById("bgMusic");
+
+  let icon =
+  document.getElementById("musicIcon");
+
+  if(musicOn){
+
+    bg.pause();
+
+    icon.innerHTML = "🔇";
+
+    musicOn = false;
+
+  }else{
+
+    bg.play();
+
+    icon.innerHTML = "🔊";
+
+    musicOn = true;
+
+  }
+
+}
+
+/* =========================
+TIMER
+========================= */
+
+setInterval(()=>{
+
+  if(running){
+
+    totalSeconds++;
+
+    let min =
+    String(Math.floor(totalSeconds / 60))
+    .padStart(2,'0');
+
+    let sec =
+    String(totalSeconds % 60)
+    .padStart(2,'0');
+
+    document.getElementById("timer")
+    .innerText =
+    `⏱️ ${min}:${sec}`;
+
+  }
+
+},1000);
+
+/* =========================
+START MEDITATION
+========================= */
+
+async function startMeditation(){
+
+  if(running) return;
+
+  running = true;
+
+  document.getElementById("sessionBtn")
+  .innerText =
+  "Reset Session";
+
+  let inhale =
+  document.getElementById("inhale").value * 1000;
+
+  let hold =
+  document.getElementById("hold").value * 1000;
+
+  let exhale =
+  document.getElementById("exhale").value * 1000;
+
+  let bg =
+  document.getElementById("bgMusic");
+
+  try{
+
+    if(musicOn){
+
+      bg.volume =
+      masterVolume * 0.4;
+
+      await bg.play();
+
+    }
+
+  }catch(e){}
+
+  while(running){
+
+    /* Inhale */
+
+    updateUI(
+    "श्वास अंदर लें",
+    "inhale",
+    inhale
+    );
+
+    speak(
+    "श्वास अंदर लें"
+    );
+
+    await sleep(inhale);
+
+    /* Hold */
+
+    if(hold > 0){
+
+      updateUI(
+      "श्वास रोकें",
+      "hold",
+      hold
+      );
+
+      speak(
+      "श्वास रोकें"
+      );
+
+      await sleep(hold);
+
+    }
+
+    /* Exhale */
+
+    updateUI(
+    "श्वास बाहर छोड़ें",
+    "exhale",
+    exhale
+    );
+
+    speak(
+    "श्वास छोड़ें"
+    );
+
+    await sleep(exhale);
+
+    rounds++;
+
+    updateProgress();
+
+    document.getElementById("rounds")
+    .innerText =
+    `🔁 ${rounds} / 108`;
+
+    checkMilestone();
+
+  }
+
+}
+
+/* =========================
+PROGRESS
+========================= */
+
+function updateProgress(){
+
+  let percent =
+  rounds / TARGET;
+
+  let offset =
+  circumference -
+  (percent * circumference);
+
+  progressCircle.style.strokeDashoffset =
+  offset;
+
+}
+
+/* =========================
+MILESTONES
+========================= */
+
+function checkMilestone(){
+
+  const bell =
+  document.getElementById("bell");
+
+  bell.volume = masterVolume;
+
+  if(rounds === 27){
+
+    bell.play();
+
+    showMessage(
+    "✨ Good Start"
+    );
+
+  }
+
+  if(rounds === 54){
+
+    bell.play();
+
+    showMessage(
+    "🌟 Nice Going"
+    );
+
+  }
+
+  if(rounds === 81){
+
+    bell.play();
+
+    showMessage(
+    "🔥 Amazing Focus"
+    );
+
+  }
+
+  if(rounds === 108){
+
+    bell.play();
+
+    showMessage(
+    "🧘 Excellent Discipline"
+    );
+
+  }
+
+}
+
+/* =========================
+MESSAGE
+========================= */
+
+function showMessage(text){
+
+  document.getElementById("message")
+  .innerText = text;
+
+}
+
+/* =========================
+BREATH UI
+========================= */
+
+function updateUI(text,cls,duration){
+
+  document.getElementById("status")
+  .innerText = text;
+
+  let circle =
+  document.getElementById("circle");
+
+  circle.style.transitionDuration =
+  (duration/1000) + "s";
+
+  circle.className =
+  "circle " + cls;
+
+}
+
+/* =========================
+SLEEP
+========================= */
+
+function sleep(ms){
+
+  return new Promise(resolve =>
+  setTimeout(resolve,ms));
+
+}
+
+</script>
+
+</body>
+</html>
