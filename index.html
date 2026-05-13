@@ -305,18 +305,6 @@ CONTAINER
 }
 
 /* =========================
-MUSIC TOGGLE
-========================= */
-
-.music-toggle{
-  cursor:pointer;
-}
-
-.music-toggle:hover{
-  transform:scale(1.08);
-}
-
-/* =========================
 TITLE
 ========================= */
 
@@ -441,6 +429,10 @@ VOLUME
 
   font-size:12px;
 
+}
+
+.music-toggle{
+  cursor:pointer;
 }
 
 input[type=range]{
@@ -675,13 +667,9 @@ MOBILE
 
 <div class="container">
 
-  <!-- Title -->
-
   <div class="title">
     🧘 Prava
   </div>
-
-  <!-- Modes -->
 
   <div class="subtitle">
 
@@ -751,9 +739,14 @@ MOBILE
 
     <div class="volume-top">
 
-      <span><span class="music-toggle"
+      <span>
+        <span
+        class="music-toggle"
         onclick="toggleMusic()"
-        id="musicIcon">🔊</span> Sound Volume</span>
+        id="musicIcon">🔊</span>
+
+        Sound Volume
+      </span>
 
       <span id="volumeValue">
         70%
@@ -811,17 +804,11 @@ MOBILE
 
   </div>
 
-  <!-- Status -->
-
   <div id="status">
     Ready
   </div>
 
-  <!-- Message -->
-
   <div id="message"></div>
-
-  <!-- Bottom -->
 
   <div class="bottom">
 
@@ -837,7 +824,7 @@ MOBILE
 
 </div>
 
-<!-- Audio -->
+<!-- AUDIO -->
 
 <audio id="bgMusic" loop preload="auto">
 <source src="music.mp3" type="audio/mpeg">
@@ -845,6 +832,18 @@ MOBILE
 
 <audio id="bell">
 <source src="bell.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="inhaleVoice" preload="auto">
+<source src="inhale.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="holdVoice" preload="auto">
+<source src="hold.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="exhaleVoice" preload="auto">
+<source src="exhale.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -864,6 +863,19 @@ let masterVolume = 0.7;
 let musicOn = true;
 
 const TARGET = 108;
+
+/* =========================
+VOICE AUDIO
+========================= */
+
+const inhaleVoice =
+document.getElementById("inhaleVoice");
+
+const holdVoice =
+document.getElementById("holdVoice");
+
+const exhaleVoice =
+document.getElementById("exhaleVoice");
 
 /* =========================
 PROGRESS
@@ -963,6 +975,14 @@ function resetSession(){
   circle.className =
   "circle";
 
+  inhaleVoice.pause();
+  holdVoice.pause();
+  exhaleVoice.pause();
+
+  inhaleVoice.currentTime = 0;
+  holdVoice.currentTime = 0;
+  exhaleVoice.currentTime = 0;
+
 }
 
 /* =========================
@@ -987,26 +1007,57 @@ volumeSlider.addEventListener("input",()=>{
   document.getElementById("bgMusic").volume =
   masterVolume * 0.4;
 
+  inhaleVoice.volume =
+  masterVolume;
+
+  holdVoice.volume =
+  masterVolume;
+
+  exhaleVoice.volume =
+  masterVolume;
+
 });
 
 /* =========================
-VOICE
+VOICE PLAY
 ========================= */
 
-function speak(text){
+function playVoice(type){
 
-  speechSynthesis.cancel();
+  inhaleVoice.pause();
+  holdVoice.pause();
+  exhaleVoice.pause();
 
-  let msg =
-  new SpeechSynthesisUtterance(text);
+  inhaleVoice.currentTime = 0;
+  holdVoice.currentTime = 0;
+  exhaleVoice.currentTime = 0;
 
-  msg.lang = "hi-IN";
+  inhaleVoice.volume =
+  masterVolume;
 
-  msg.rate = 0.85;
+  holdVoice.volume =
+  masterVolume;
 
-  msg.volume = masterVolume;
+  exhaleVoice.volume =
+  masterVolume;
 
-  speechSynthesis.speak(msg);
+  if(type === "inhale"){
+
+    inhaleVoice.play();
+
+  }
+
+  if(type === "hold"){
+
+    holdVoice.play();
+
+  }
+
+  if(type === "exhale"){
+
+    exhaleVoice.play();
+
+  }
 
 }
 
@@ -1069,7 +1120,7 @@ setInterval(()=>{
 },1000);
 
 /* =========================
-START MEDITATION
+START
 ========================= */
 
 async function startMeditation(){
@@ -1109,7 +1160,7 @@ async function startMeditation(){
 
   while(running){
 
-    /* Inhale */
+    /* INHALE */
 
     updateUI(
     "श्वास अंदर लें",
@@ -1117,13 +1168,11 @@ async function startMeditation(){
     inhale
     );
 
-    speak(
-    "श्वास अंदर लें"
-    );
+    playVoice("inhale");
 
     await sleep(inhale);
 
-    /* Hold */
+    /* HOLD */
 
     if(hold > 0){
 
@@ -1133,15 +1182,13 @@ async function startMeditation(){
       hold
       );
 
-      speak(
-      "श्वास रोकें"
-      );
+      playVoice("hold");
 
       await sleep(hold);
 
     }
 
-    /* Exhale */
+    /* EXHALE */
 
     updateUI(
     "श्वास बाहर छोड़ें",
@@ -1149,9 +1196,7 @@ async function startMeditation(){
     exhale
     );
 
-    speak(
-    "श्वास छोड़ें"
-    );
+    playVoice("exhale");
 
     await sleep(exhale);
 
